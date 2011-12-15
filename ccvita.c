@@ -172,14 +172,20 @@ PHP_FUNCTION(confirm_ccvita_compiled)
    follow this convention for the convenience of others editing your code.
 */
 
-/* {{{ proto string ccvita_string()
+/* {{{ proto string ccvita_string(string str)
     */
 PHP_FUNCTION(ccvita_string)
 {
-	if (zend_parse_parameters_none() == FAILURE) {
+	char *str = NULL;
+	int argc = ZEND_NUM_ARGS();
+	int str_len;
+	char *result;
+
+	if (zend_parse_parameters(argc TSRMLS_CC, "s", &str, &str_len) == FAILURE) 
 		return;
-	}
-	php_error(E_WARNING, "ccvita_string: not yet implemented");
+
+	len = spprintf(&result, 0, "<a href=\"%.78s\">Link</a>", str);
+	RETURN_STRINGL(result, len, 0);
 }
 /* }}} */
 
