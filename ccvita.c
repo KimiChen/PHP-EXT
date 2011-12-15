@@ -184,8 +184,8 @@ PHP_FUNCTION(ccvita_string)
 	if (zend_parse_parameters(argc TSRMLS_CC, "s", &str, &str_len) == FAILURE) 
 		return;
 
-	len = spprintf(&result, 0, "<a href=\"%.78s\">Link</a>", str);
-	RETURN_STRINGL(result, len, 0);
+	str_len = spprintf(&result, 0, "<a href=\"%.78s\">Link</a>", str);
+	RETURN_STRINGL(result, str_len, 0);
 }
 /* }}} */
 
